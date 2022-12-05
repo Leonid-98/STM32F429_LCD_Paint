@@ -3,7 +3,7 @@
 ## Generic overview
 
 This is FreeRTOS based paint application inspired by Windows 98 Paint. <br/>
-Project based on modified main board: added extension PCB, created in University of Tartu as part of the Embedded Systems (LOTI.05.085) course. <br/>
+Project based on modified main board: added extension PCB, created in University of Tartu as part of the Embedded Systems course (LOTI.05.085). <br/>
 Most relevant extensions, used in this project is:
 
 1. Two additional GPIO buttons
