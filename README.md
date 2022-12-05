@@ -6,9 +6,8 @@ FreeRTOS based paint application inspired by Windows 98 Paint.
 Project based on modified main board: added extension PCB, created in University of Tartu.
 Most relevant extensions, used in this project is:
 
-    1. Two additional GPIO buttons
-
-    2. Joystick potentiometer with ADC chip, interfaced by SPI
+1. Two additional GPIO buttons
+2. Joystick potentiometer with ADC chip, interfaced by SPI
 
 Cursor movement performed by joystick and actions by two additional buttons and built-in user button on the mainboard.
 
