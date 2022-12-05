@@ -1,7 +1,7 @@
-#include "main.h"
-
 #ifndef INC_BUTTONS_H_
 #define INC_BUTTONS_H_
+
+#include "main.h"
 
 #define BUTTONS_JOY_PORT GPIOC
 #define BUTTONS_JOY_PIN GPIO_PIN_11

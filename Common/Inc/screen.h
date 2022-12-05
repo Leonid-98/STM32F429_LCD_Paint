@@ -1,8 +1,8 @@
-#include "main.h"
-#include "stm32f429i_discovery_lcd.h"
-
 #ifndef INC_LCD_GAME_H_
 #define INC_LCD_GAME_H_
+
+#include "main.h"
+#include "stm32f429i_discovery_lcd.h"
 
 #define SCREEN_WIDTH BSP_LCD_GetXSize()
 #define SCREEN_HEIGHT BSP_LCD_GetYSize()

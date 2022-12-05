@@ -1,9 +1,9 @@
+#ifndef INC_JOYSTICK_H_
+#define INC_JOYSTICK_H_
+
 #include "spi.h"
 #include "main.h"
 #include "stdlib.h"
-
-#ifndef INC_JOYSTICK_H_
-#define INC_JOYSTICK_H_
 
 #define CS_START() HAL_GPIO_WritePin(SPI4_CS_GPIO_Port, SPI4_CS_Pin, 0)
 #define CS_END() HAL_GPIO_WritePin(SPI4_CS_GPIO_Port, SPI4_CS_Pin, 1)
