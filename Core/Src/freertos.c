@@ -27,8 +27,7 @@ void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer,
 void vApplicationIdleHook(void);
 void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName);
 void vApplicationMallocFailedHook(void);
-__weak void vApplicationIdleHook(void)
-{
+__weak void vApplicationIdleHook(void) {
 }
 __weak void vApplicationStackOverflowHook(xTaskHandle xTask,
                                           signed char *pcTaskName)

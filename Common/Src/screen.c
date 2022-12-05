@@ -37,7 +37,6 @@ void screen_updateButtons()
 			{
 				BSP_LCD_DrawBitmap(pos_x, SCREEN_BUTTON_POS_Y, (uint8_t *)bmp_buttonPressed);
 			}
-
 		}
 		else
 		{
@@ -60,7 +59,6 @@ void screen_buttonRightPressed()
 			screen_selected_button_idx = 0;
 		}
 	}
-
 }
 
 void screen_buttonLeftPressed()
@@ -77,8 +75,6 @@ void screen_buttonLeftPressed()
 			screen_selected_button_idx = 3;
 		}
 	}
-
-
 }
 
 void screen_buttonOkPressed()
@@ -88,7 +84,3 @@ void screen_buttonOkPressed()
 	HAL_Delay(100);
 	screen_is_button_selected ^= 1;
 }
-
-
-
-

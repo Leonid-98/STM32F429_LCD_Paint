@@ -12,15 +12,22 @@
 #define BUTTONS_USER_PORT GPIOA
 #define BUTTONS_USER_PIN GPIO_PIN_0
 
-typedef enum {
-	Button_Up, Button_Rising, Button_Falling, Button_Down,
+typedef enum
+{
+	Button_Up,
+	Button_Rising,
+	Button_Falling,
+	Button_Down,
 } button_state_e;
 
-typedef enum {
-	Active = 0, Not_Active,
+typedef enum
+{
+	Active = 0,
+	Not_Active,
 } pin_state_e;
 
-typedef struct {
+typedef struct
+{
 	GPIO_TypeDef *port;
 	uint16_t pin;
 	pin_state_e curr_pin_state;
