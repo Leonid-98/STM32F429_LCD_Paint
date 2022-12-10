@@ -47,12 +47,6 @@ void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer,
 }
 // Auto generated code end
 
-// void clear_square() {
-//  BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
-//  BSP_LCD_DrawRect(cursor_pos.x, cursor_pos.y, cursor_size, cursor_size);
-//  BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
-// }
-
 void taskGetJoystickPos()
 {
     int size;
@@ -75,19 +69,19 @@ void taskUpdateXPos()
         osMutexWait(vComMutexHandleMain, portMAX_DELAY);
 
         // Update postition (move object coord)
-        if ((joy_pos.x > JOY_CENTER + JOY_CENTER_THRESH) & (cursor_pos.x < SCREEN_DRAW_AREA_STOP_X - cursor_size))
+        if ((joy_pos.x > JOY_CENTER + JOY_CENTER_THRESH) & (g_cursor_pos.x < SCREEN_DRAW_AREA_STOP_X - g_cursor_size))
         {
-            cursor_pos.x++;
+            g_cursor_pos.x++;
             screen_updateCursor();
         }
-        else if ((joy_pos.x < JOY_CENTER - JOY_CENTER_THRESH) & (cursor_pos.x > SCREEN_DRAW_AREA_START_X))
+        else if ((joy_pos.x < JOY_CENTER - JOY_CENTER_THRESH) & (g_cursor_pos.x > SCREEN_DRAW_AREA_START_X))
         {
-            cursor_pos.x--;
+            g_cursor_pos.x--;
             screen_updateCursor();
         }
 
         // Calculate delay (aka speed of the cursor)
-        taskDelay = joy_getTaskDelayMs(cursor_pos.x);
+        taskDelay = joy_getTaskDelayMs(g_cursor_pos.x);
 
         osMutexRelease(vComMutexHandleMain);
         vTaskDelay(pdMS_TO_TICKS(taskDelay));
@@ -102,21 +96,21 @@ void taskUpdateYPos()
         osMutexWait(vComMutexHandleMain, portMAX_DELAY);
 
         // Update postition (move object coord)
-        if ((joy_pos.y > JOY_CENTER + JOY_CENTER_THRESH) & (cursor_pos.y > SCREEN_DRAW_AREA_START_Y))
+        if ((joy_pos.y > JOY_CENTER + JOY_CENTER_THRESH) & (g_cursor_pos.y > SCREEN_DRAW_AREA_START_Y))
         {
 
-            cursor_pos.y--;
+            g_cursor_pos.y--;
             screen_updateCursor();
         }
-        else if ((joy_pos.y < JOY_CENTER - JOY_CENTER_THRESH) & (cursor_pos.y < SCREEN_DRAW_AREA_STOP_Y - cursor_size))
+        else if ((joy_pos.y < JOY_CENTER - JOY_CENTER_THRESH) & (g_cursor_pos.y < SCREEN_DRAW_AREA_STOP_Y - g_cursor_size))
         {
 
-            cursor_pos.y++;
+            g_cursor_pos.y++;
             screen_updateCursor();
         }
 
         // Calculate delay (aka speed of the cursor)
-        taskDelay = joy_getTaskDelayMs(cursor_pos.y);
+        taskDelay = joy_getTaskDelayMs(g_cursor_pos.y);
 
         osMutexRelease(vComMutexHandleMain);
         vTaskDelay(pdMS_TO_TICKS(taskDelay));
@@ -152,18 +146,14 @@ void StartDefaultTask(void const *argument)
         state = buttons_joyGetState();
         if (state == Button_Falling)
         {
-//          BSP_LCD_SetLayerVisible(layer, 0);
-//          layer ^= 1;
-//          BSP_LCD_SetLayerVisible(layer, 1);
-//          BSP_LCD_SelectLayer(layer);
-            HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_13);
+        	screen_buttonJoyPressed();
+        	screen_updateCursor();
         }
 
         state = buttons_blueGetState();
         if (state == Button_Falling)
         {
             screen_buttonLeftPressed();
-            screen_updateButtons();
             screen_updateCursor();
         }
 
@@ -171,7 +161,6 @@ void StartDefaultTask(void const *argument)
         if (state == Button_Falling)
         {
             screen_buttonRightPressed();
-            screen_updateButtons();
             screen_updateCursor();
         }
 
@@ -179,7 +168,6 @@ void StartDefaultTask(void const *argument)
         if (state == Button_Falling)
         {
             screen_buttonOkPressed();
-            screen_updateButtons();
             screen_updateCursor();
         }
     }

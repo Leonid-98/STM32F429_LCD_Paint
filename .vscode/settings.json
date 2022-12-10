@@ -1,6 +1,3 @@
 {
-    "files.associations": {
-        "i2c.h": "c",
-        "ltdc.h": "c"
-    }
+    "ros.distro": "noetic"
 }
