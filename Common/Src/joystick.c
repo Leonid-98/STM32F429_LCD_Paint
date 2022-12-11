@@ -1,5 +1,15 @@
 #include <joystick.h>
 
+// ##################
+// EXTERN VARIABLES #
+// ##################
+
+joy_pos_st joy_pos;
+
+// ###################
+// PRIVATE FUNCTIONS #
+// ###################
+
 /**
  * Converts raw data from interval [a, b] to interval [c, d]
  * where a, b is raw ADC values and c, d is scaled values.
@@ -8,7 +18,7 @@
  * NB! X raw value is inverted, i.e joystick left position is ADC MAX output
  * and right position is ADC MIN output
  */
-static void _joy_convertRawData(int16_t *x, int16_t *y)
+static void priv_convertRawData(int16_t *x, int16_t *y)
 {
 	float a;
 	float b;
@@ -50,6 +60,10 @@ static void _joy_convertRawData(int16_t *x, int16_t *y)
 	*y = ((d - c) / (b - a)) * ((float)(*y) - a) + c;
 }
 
+// ##################
+// PUBLIC FUNCTIONS #
+// ##################
+
 /**
  * Gets joystick XY position by reading ADC values. ADC connected to the SPI4
  */
@@ -74,7 +88,7 @@ void joy_readXY(joy_pos_st *joy_pos)
 	int16_t y = (joy_rx_buff[0] << 8) | joy_rx_buff[1];
 	// Convert values to the intervals between JOY_MIN and JOY_MAX
 
-	_joy_convertRawData(&x, &y);
+	priv_convertRawData(&x, &y);
 	joy_pos->x = x;
 	joy_pos->y = y;
 }
@@ -84,10 +98,10 @@ void joy_readXY(joy_pos_st *joy_pos)
  */
 uint8_t joy_getTaskDelayMs(int8_t pos)
 {
+	// TODO get rid of hardcoded values
 	uint8_t taskDelay;
-	// TODO use MAX and MIN_DELAY
-
 	pos = abs(pos);
+
 	if (pos > 90)
 	{
 		taskDelay = 4;

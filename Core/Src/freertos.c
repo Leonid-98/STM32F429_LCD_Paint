@@ -9,14 +9,12 @@
 #include "gpio.h"
 #include "stream_buffer.h"
 
-#include <joystick.h>
-#include <screen.h>
-#include <buttons.h>
+#include "joystick.h"
+#include "screen.h"
+#include "buttons.h"
 
 osMutexId vComMutexHandleMain;
 osThreadId defaultTaskHandle;
-
-joy_pos_st joy_pos;
 
 // Auto generated code
 void StartDefaultTask(void const *argument);
@@ -27,7 +25,8 @@ void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer,
 void vApplicationIdleHook(void);
 void vApplicationStackOverflowHook(xTaskHandle xTask, signed char *pcTaskName);
 void vApplicationMallocFailedHook(void);
-__weak void vApplicationIdleHook(void) {
+__weak void vApplicationIdleHook(void)
+{
 }
 __weak void vApplicationStackOverflowHook(xTaskHandle xTask,
                                           signed char *pcTaskName)
@@ -49,14 +48,9 @@ void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer,
 
 void taskGetJoystickPos()
 {
-    int size;
-    char joy_buff[30];
     for (;;)
     {
         joy_readXY(&joy_pos);
-
-        size = snprintf(joy_buff, 30, "LF=%d, UD=%d\n", joy_pos.x, joy_pos.y);
-
         vTaskDelay(pdMS_TO_TICKS(20));
     }
 }
@@ -66,24 +60,18 @@ void taskUpdateXPos()
     uint8_t taskDelay;
     for (;;)
     {
-        osMutexWait(vComMutexHandleMain, portMAX_DELAY);
-
-        // Update postition (move object coord)
+        //        osMutexWait(vComMutexHandleMain, 100);
         if ((joy_pos.x > JOY_CENTER + JOY_CENTER_THRESH) & (g_cursor_pos.x < SCREEN_DRAW_AREA_STOP_X - g_cursor_size))
         {
-            g_cursor_pos.x++;
-            screen_updateCursor();
+            screen_cursorMoved(Cursor_Right);
         }
         else if ((joy_pos.x < JOY_CENTER - JOY_CENTER_THRESH) & (g_cursor_pos.x > SCREEN_DRAW_AREA_START_X))
         {
-            g_cursor_pos.x--;
-            screen_updateCursor();
+            screen_cursorMoved(Cursor_Left);
         }
+        //        osMutexRelease(vComMutexHandleMain);
 
-        // Calculate delay (aka speed of the cursor)
         taskDelay = joy_getTaskDelayMs(g_cursor_pos.x);
-
-        osMutexRelease(vComMutexHandleMain);
         vTaskDelay(pdMS_TO_TICKS(taskDelay));
     }
 }
@@ -93,26 +81,18 @@ void taskUpdateYPos()
     uint8_t taskDelay;
     for (;;)
     {
-        osMutexWait(vComMutexHandleMain, portMAX_DELAY);
-
-        // Update postition (move object coord)
+        //        osMutexWait(vComMutexHandleMain, 100);
         if ((joy_pos.y > JOY_CENTER + JOY_CENTER_THRESH) & (g_cursor_pos.y > SCREEN_DRAW_AREA_START_Y))
         {
-
-            g_cursor_pos.y--;
-            screen_updateCursor();
+            screen_cursorMoved(Cursor_Down);
         }
         else if ((joy_pos.y < JOY_CENTER - JOY_CENTER_THRESH) & (g_cursor_pos.y < SCREEN_DRAW_AREA_STOP_Y - g_cursor_size))
         {
-
-            g_cursor_pos.y++;
-            screen_updateCursor();
+            screen_cursorMoved(Cursor_Up);
         }
+        //        osMutexRelease(vComMutexHandleMain);
 
-        // Calculate delay (aka speed of the cursor)
         taskDelay = joy_getTaskDelayMs(g_cursor_pos.y);
-
-        osMutexRelease(vComMutexHandleMain);
         vTaskDelay(pdMS_TO_TICKS(taskDelay));
     }
 }
@@ -120,10 +100,9 @@ void taskUpdateYPos()
 void MX_FREERTOS_Init(void)
 {
     screen_initBackground();
-    screen_updateCursor();
 
-    osMutexDef(vComMutex);
-    vComMutexHandleMain = osMutexCreate(osMutex(vComMutex));
+    //    osMutexDef(vComMutex);
+    //    vComMutexHandleMain = osMutexCreate(osMutex(vComMutex));
 
     osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 4096);
     defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
@@ -136,8 +115,6 @@ void MX_FREERTOS_Init(void)
 void StartDefaultTask(void const *argument)
 {
     button_state_e state;
-
-    uint8_t layer = 0;
     for (;;)
     {
         osDelay(10);
@@ -146,29 +123,26 @@ void StartDefaultTask(void const *argument)
         state = buttons_joyGetState();
         if (state == Button_Falling)
         {
-        	screen_buttonJoyPressed();
-        	screen_updateCursor();
+            screen_buttonJoyPressed();
+            HAL_GPIO_TogglePin(GPIOG, GPIO_PIN_14);
         }
 
         state = buttons_blueGetState();
         if (state == Button_Falling)
         {
             screen_buttonLeftPressed();
-            screen_updateCursor();
         }
 
         state = buttons_yellowGetState();
         if (state == Button_Falling)
         {
             screen_buttonRightPressed();
-            screen_updateCursor();
         }
 
         state = buttons_userGetState();
         if (state == Button_Falling)
         {
             screen_buttonOkPressed();
-            screen_updateCursor();
         }
     }
 }

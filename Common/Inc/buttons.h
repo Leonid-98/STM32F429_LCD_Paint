@@ -3,14 +3,14 @@
 
 #include "main.h"
 
-#define BUTTONS_JOY_PORT GPIOC
-#define BUTTONS_JOY_PIN GPIO_PIN_11
-#define BUTTONS_BLUE_PORT GPIOG
-#define BUTTONS_BLUE_PIN GPIO_PIN_2
-#define BUTTONS_YELLOW_PORT GPIOG
-#define BUTTONS_YELLOW_PIN GPIO_PIN_3
-#define BUTTONS_USER_PORT GPIOA
-#define BUTTONS_USER_PIN GPIO_PIN_0
+#define BUTTONS_JOY_PORT 		GPIOC
+#define BUTTONS_JOY_PIN 		GPIO_PIN_11
+#define BUTTONS_BLUE_PORT 		GPIOG
+#define BUTTONS_BLUE_PIN 		GPIO_PIN_2
+#define BUTTONS_YELLOW_PORT 	GPIOG
+#define BUTTONS_YELLOW_PIN 		GPIO_PIN_3
+#define BUTTONS_USER_PORT 		GPIOA
+#define BUTTONS_USER_PIN 		GPIO_PIN_0
 
 typedef enum
 {
@@ -35,7 +35,6 @@ typedef struct
 	button_state_e state;
 } button_st;
 
-void buttons_updateGivenButton(button_st *button);
 void buttons_updateAll();
 button_state_e buttons_joyGetState();
 button_state_e buttons_blueGetState();

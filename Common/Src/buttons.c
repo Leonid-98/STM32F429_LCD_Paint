@@ -1,5 +1,9 @@
 #include <buttons.h>
 
+// #######################
+// FILE GLOBAL VARIABLES #
+// #######################
+
 button_st button_joy = {
 	.port = BUTTONS_JOY_PORT,
 	.pin = BUTTONS_JOY_PIN,
@@ -28,7 +32,11 @@ button_st button_user = {
 	.prev_pin_state = Not_Active,
 	.state = Button_Falling};
 
-void buttons_updateGivenButton(button_st *button)
+// ###################
+// PRIVATE FUNCTIONS #
+// ###################
+
+static void priv_updateGivenButton(button_st *button)
 {
 	button->curr_pin_state = HAL_GPIO_ReadPin(button->port, button->pin);
 
@@ -52,12 +60,16 @@ void buttons_updateGivenButton(button_st *button)
 	button->prev_pin_state = button->curr_pin_state;
 }
 
+// ##################
+// PUBLIC FUNCTIONS #
+// ##################
+
 void buttons_updateAll()
 {
-	buttons_updateGivenButton(&button_joy);
-	buttons_updateGivenButton(&button_blue);
-	buttons_updateGivenButton(&button_yellow);
-	buttons_updateGivenButton(&button_user);
+	priv_updateGivenButton(&button_joy);
+	priv_updateGivenButton(&button_blue);
+	priv_updateGivenButton(&button_yellow);
+	priv_updateGivenButton(&button_user);
 }
 
 button_state_e buttons_joyGetState()

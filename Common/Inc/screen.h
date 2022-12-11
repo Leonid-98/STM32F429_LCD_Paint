@@ -27,9 +27,9 @@
 #define SCREEN_CURSOR_COLOR_DIST_X			16
 #define SCREEN_CURSOR_COLOR_SQUARE_WIDTH 	13
 #define SCREEN_CURSOR_COLOR_POS_Y			253
-
 #define SCREEN_CURSOR_MAX_SIZE				30
-#define SCREEN_CURSOR_MIN_SIZE				4
+#define SCREEN_CURSOR_MIN_SIZE				2
+#define SCREEN_CURSOR_BUFF_SIZE				9
 
 // Selector above square, that shows what color is selected
 #define SCREEN_COLOR_SELECTOR_START_X 		SCREEN_CURSOR_COLOR_START_X
@@ -55,21 +55,32 @@
 #define SCREEN_CURSOR_COLOR_12				0xFF800080
 #define SCREEN_CURSOR_COLOR_13				0xFFFF80FF
 
+// Main colors
 #define SCREEN_SELECTOR_COLOR				0xFF716F64
 #define SCREEN_BACKGROUND_COLOR				0xFFDED9BC
 
-typedef enum {
+typedef enum
+{
 	Button_Pensize = 0,
 	Button_Palette = 1,
 	Button_Erase = 2,
 	Button_Clear = 3
 } screen_selected_button_e;
 
-typedef enum {
+typedef enum
+{
 	Button_Pressed = 0,
 	Button_Not_Pressed = 1,
 	Button_Active = 2
 } screen_selected_button_state_e;
+
+typedef enum
+{
+	Cursor_Left,
+	Cursor_Right,
+	Cursor_Up,
+	Cursor_Down
+} screen_cursor_direction_e;
 
 typedef struct
 {
@@ -77,15 +88,14 @@ typedef struct
 	uint8_t y;
 } screen_pixel_pos_st;
 
-extern screen_pixel_pos_st g_cursor_pos;
-extern uint8_t g_cursor_size;
-
 void screen_initBackground();
-void screen_updateCursor();
-void screen_updateButtons();
 void screen_buttonRightPressed();
 void screen_buttonLeftPressed();
 void screen_buttonOkPressed();
 void screen_buttonJoyPressed();
+void screen_cursorMoved(screen_cursor_direction_e direction);
+
+extern screen_pixel_pos_st g_cursor_pos;
+extern uint8_t g_cursor_size;
 
 #endif /* INC_LCD_GAME_H_ */

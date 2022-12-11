@@ -117,11 +117,13 @@ int main(void)
     BSP_LCD_LayerDefaultInit(0, LCD_FRAME_BUFFER);
     BSP_LCD_LayerDefaultInit(1, LCD_FRAME_BUFFER);
 
-    BSP_LCD_SelectLayer(1);
+    BSP_LCD_SelectLayer(0);
+    BSP_LCD_Clear(LCD_COLOR_WHITE);
     BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
 
-    BSP_LCD_SelectLayer(0);
-    BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
+    BSP_LCD_SelectLayer(1);
+	BSP_LCD_Clear(LCD_COLOR_WHITE);
+	BSP_LCD_SetTextColor(LCD_COLOR_RED);
 
     /* USER CODE END 2 */
 

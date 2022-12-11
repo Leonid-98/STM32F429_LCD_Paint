@@ -901,7 +901,7 @@ void BSP_LCD_DrawEllipse(int Xpos, int Ypos, int XRadius, int YRadius)
  * @param  Y: the bmp Y position in the LCD
  * @param  pBmp: Bmp picture address in the internal Flash
  */
-void BSP_LCD_DrawBitmap(uint32_t X, uint32_t Y, uint8_t *pBmp)
+void BSP_LCD_DrawBitmap(uint32_t X, uint32_t Y, const uint8_t *pBmp)
 {
   uint32_t index = 0, width = 0, height = 0, bitpixel = 0;
   uint32_t address;
