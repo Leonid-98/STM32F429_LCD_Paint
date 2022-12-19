@@ -2,12 +2,18 @@
 
 ## Generic overview
 
-This is FreeRTOS based paint application inspired by Windows 98 Paint. <br/>
-Project based on modified main board: added extension PCB, created in University of Tartu as part of the Embedded Systems course (LOTI.05.085). <br/>
-Most relevant extensions, used in this project is:
-
+This is FreeRTOS based paint application inspired by Windows 98 Paint, created within University of Tartu Embedded Systems course (LOTI.05.085) <br/>
+Mainboard is STM32F429I-DISC1 modified with extension PCB, that contains: <br/>
 1. Two additional GPIO buttons
 2. Joystick potentiometer with ADC chip, interfaced by SPI
+3. 3x mikroBUS socket
+4. FTDI UART – USB
+
+<details><summary>Photo of board</summary>
+Credits for this board: University of Tartu
+
+<img src="/images/devboard.png" width=35% height="auto"/></br>
+</details>
 
 Cursor movement performed by joystick and actions by two additional buttons and built-in user button on the mainboard.
 
