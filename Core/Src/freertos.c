@@ -70,7 +70,7 @@ void taskUpdateXPos()
             screen_cursorMoved(Cursor_Left);
         }
         //        osMutexRelease(vComMutexHandleMain);
-
+        
         taskDelay = joy_getTaskDelayMs(g_cursor_pos.x);
         vTaskDelay(pdMS_TO_TICKS(taskDelay));
     }
