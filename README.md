@@ -52,7 +52,7 @@ There is 3 tasks in FreeRTOS:
 
 Fact, that X and Y cursor update are independent makes cursor movement smoother. <br/>
 To get even smoother cursor movement, next feature were used: cursor speed depending on joystick position from center. <br/>
-The far joystick is - the faster is cursor. *Speed* is defined by rate frequency of task, that can de dynamically changed by changing taskDelay:
+The far joystick is - the faster is cursor. *Speed* is defined by frequency of task, that can de dynamically changed by changing taskDelay:
 ```
 void taskUpdateXPos()
 {
