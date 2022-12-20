@@ -33,7 +33,7 @@ If change cursor/color active, yellow and blue buttons will change those paramet
 
 **Gui example**
 
-Button active (i.e. activated color selector)            |  Button selected
+Color selector active           |  Color selector just scrolled
 :-------------------------:|:-------------------------:
 <img src="/.images/gui_btn_active.png" width="auto" height="auto"/></br>  |  <img src="/.images/gui_btn_selected.png" width="auto" height="auto"/></br>
 
