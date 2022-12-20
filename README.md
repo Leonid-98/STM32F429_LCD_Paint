@@ -1,7 +1,8 @@
 # STM32F429_LCD_Paint
 
 ## Demo
-
+<video src="/.images/demo.mp4" width="auto"/>
+</br>
 
 
 ## Generic overview
@@ -15,8 +16,8 @@ Mainboard is STM32F429I-DISC1 modified with extension PCB, that contains: <br/>
 
 <details><summary>Photo of board</summary>
 Credits for this extension goes to University of Tartu
-
-<img src="/.images/devboard.png" width=35% height="auto"/></br>
+<img src="/.images/devboard.png" width=35% height="auto"/>
+</br>
 </details>
 
 <br/>
@@ -33,9 +34,9 @@ If change cursor/color active, yellow and blue buttons will change those paramet
 
 **Gui example**
 
-Color selector active           |  Color selector just scrolled | Animated scroll
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="/.images/gui_btn_active.png" width="auto" height="auto"/></br>  |  <img src="/.images/gui_btn_selected.png" width="auto" height="auto"/></br> | <img src="/.images/gui_btn_active.png" width="auto" height="auto"/></br>
+Color selector active           |  Color selector just scrolled
+:-------------------------:|:-------------------------:
+<img src="/.images/gui_btn_active.png" width="auto" height="auto"/></br>  |  <img src="/.images/gui_btn_selected.png" width="auto" height="auto"/></br>
 
 
 
