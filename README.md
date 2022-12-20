@@ -16,6 +16,7 @@ Mainboard is STM32F429I-DISC1 modified with extension PCB, that contains: <br/>
 
 <details><summary>Photo of board</summary>
 Credits for this extension goes to University of Tartu
+
 <img src="/.images/devboard.png" width=35% height="auto"/>
 </br>
 </details>
