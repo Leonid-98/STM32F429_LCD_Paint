@@ -3,8 +3,8 @@
 </br>
 
 ## Demo
-[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtube.com/shorts/aMHg6pMG_s8?feature=share)
-<video src='https://youtube.com/shorts/aMHg6pMG_s8?feature=share' width=180/>
+[![Link](/.images/preview.png)](https://youtube.com/shorts/aMHg6pMG_s8?feature=share)
+[<img src="/.images/preview.png" width="35%">](https://youtube.com/shorts/aMHg6pMG_s8?feature=share)
 </br>
 
 
