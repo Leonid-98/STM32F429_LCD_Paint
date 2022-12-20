@@ -51,7 +51,8 @@ There is 3 tasks in FreeRTOS:
 3. Read XY joystick position (Read ADC values, process them)
 
 Fact, that X and Y cursor update are independent makes cursor movement smoother. <br/>
-Even smoother cursor movement gives next feature: cursor speed depending on joystick position from center. The far joystick is - the faster is cursor. 'Speed' is defined by rate frequency of task, that can de dynamically changed by changing taskDelay:
+To get even smoother cursor movement, next feature were used: cursor speed depending on joystick position from center. <br/>
+The far joystick is - the faster is cursor. *Speed* is defined by rate frequency of task, that can de dynamically changed by changing taskDelay:
 ```
 void taskUpdateXPos()
 {
