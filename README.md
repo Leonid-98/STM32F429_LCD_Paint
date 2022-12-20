@@ -33,9 +33,9 @@ If change cursor/color active, yellow and blue buttons will change those paramet
 
 **Gui example**
 
-Color selector active           |  Color selector just scrolled
-:-------------------------:|:-------------------------:
-<img src="/.images/gui_btn_active.png" width="auto" height="auto"/></br>  |  <img src="/.images/gui_btn_selected.png" width="auto" height="auto"/></br>
+Color selector active           |  Color selector just scrolled | Animated scroll
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src="/.images/gui_btn_active.png" width="auto" height="auto"/></br>  |  <img src="/.images/gui_btn_selected.png" width="auto" height="auto"/></br> | <img src="/.images/gui_btn_active.png" width="auto" height="auto"/></br>
 
 
 
