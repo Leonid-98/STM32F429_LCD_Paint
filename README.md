@@ -45,6 +45,27 @@ Tab selector          |  Color selector | Size selector
 
 ## Code flow
 
+There is 3 tasks in FreeRTOS:
+1. Update X position (Update cursor position on the screen according to the joy XY position)
+2. Update Y position
+3. Read XY joystick position (Read ADC values, process them)
+
+Fact, that X and Y cursor update are independent makes cursor movement smoother. <br/>
+Even smoother cursor movement gives next feature: cursor speed depending on joystick position from center. The far joystick is - the faster is cursor. 'Speed' is defined by rate frequency of task, that can de dynamically changed by changing taskDelay:
+```
+void taskUpdateXPos()
+{
+    uint8_t taskDelay;
+    for (;;)
+    {
+        ... update cursor pos on screen ...
+
+        taskDelay = joy_getTaskDelayMs(g_cursor_pos.x);
+        vTaskDelay(pdMS_TO_TICKS(taskDelay));
+    }
+}
+```
+
 <br/>
 
 ## Project structure
