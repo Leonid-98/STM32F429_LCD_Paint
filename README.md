@@ -1,7 +1,7 @@
 # STM32F429_LCD_Paint
 
 ## Demo
-<video src="/.images/demo.mp4" width="auto"/>
+<video src="/.images/demo.mp4" width="auto">
 </br>
 
 
