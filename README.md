@@ -1,7 +1,5 @@
 # STM32F429_LCD_Paint
 
-</br>
-
 ## Demo
 [<img src="/.images/preview.png" width="25%">](https://youtube.com/shorts/aMHg6pMG_s8?feature=share)
 </br>
@@ -36,9 +34,9 @@ If change cursor/color active, yellow and blue buttons will change those paramet
 
 **Gui example**
 
-Color selector active           |  Color selector just scrolled
-:-------------------------:|:-------------------------:
-<img src="/.images/gui_btn_active.png" width="auto" height="auto"/></br>  |  <img src="/.images/gui_btn_selected.png" width="auto" height="auto"/></br>
+Tab selector          |  Color selector | Size selector
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src="/.images/tab_selector.gif" width="auto" height="auto"/></br>  |  <img src="/.images/color_selector.gif" width="auto" height="auto"/></br> | <img src="/.images/size_selector.gif" width="auto" height="auto"/></br> 
 
 
 
