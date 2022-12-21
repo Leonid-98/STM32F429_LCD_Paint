@@ -39,6 +39,8 @@ Tab selector          |  Color selector | Size selector
 :-------------------------:|:-------------------------:|:-------------------------:
 <img src="/.images/tab_selector.gif" width="auto" height="auto"/></br>  |  <img src="/.images/color_selector.gif" width="auto" height="auto"/></br> | <img src="/.images/size_selector.gif" width="auto" height="auto"/></br> 
 
+*Errata: on 3rd gif cursor size button not active, but should. This it bug made by creating this gif.*
+
 
 
 <br/>
